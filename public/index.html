@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Watertight: a private AI data room</title>
+  <link rel="icon" href="/mark.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 9h26l-3.5 14.5a3 3 0 0 1-2.9 2.3H9.4a3 3 0 0 1-2.9-2.3L3 9Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11.5 9v16.6M20.5 9v16.6" stroke="currentColor" stroke-width="2"/><path d="M4.6 15.5h22.8" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2"/></svg>
+      <div>
+        <div class="wordmark">Watertight</div>
+        <div class="sub">Private AI data room</div>
+      </div>
+    </div>
+    <div class="deal-meta" id="dealMeta"></div>
+    <button class="hull" id="hullBtn" type="button">
+      <span class="hull-dot" id="hullDot"></span>
+      <span id="hullLabel">Verify the hull</span>
+    </button>
+  </header>
+
+  <main class="deck">
+    <!-- Founder -->
+    <section class="pane founder" aria-label="Founder console">
+      <div class="pane-head">
+        <span class="role">Founder</span>
+        <h2 id="companyName">Data room</h2>
+        <p class="muted" id="companyTag"></p>
+      </div>
+
+      <div class="block">
+        <div class="block-title">Vault <span class="muted" id="vaultNote"></span></div>
+        <ul class="files" id="files"></ul>
+      </div>
+
+      <div class="block">
+        <div class="block-title">Seals <span class="muted">enforced before the model sees anything</span></div>
+        <div id="seals"></div>
+        <button class="link" id="inspectBtn" type="button">Inspect exactly what the model sees →</button>
+      </div>
+
+      <div class="block compartment" id="compartment"></div>
+
+      <div class="founder-actions">
+        <button class="btn btn-danger" id="revokeBtn" type="button">Revoke access</button>
+        <button class="btn btn-ghost hidden" id="reopenBtn" type="button">Open a new compartment</button>
+      </div>
+    </section>
+
+    <!-- Investor -->
+    <section class="pane investor" aria-label="Investor view">
+      <div class="pane-head row">
+        <div>
+          <span class="role">Investor</span>
+          <h2>Ask the room</h2>
+        </div>
+        <button class="btn btn-ghost" id="claimsBtn" type="button">Check the deck</button>
+      </div>
+      <div class="thread" id="thread">
+        <div class="empty" id="empty">
+          <p>Ask anything about the company. Answers come from the founder's files and cite them. Sealed details never reach the model or you.</p>
+        </div>
+      </div>
+      <div class="chips" id="chips"></div>
+      <form class="composer" id="composer">
+        <input id="q" autocomplete="off" placeholder="What's net revenue retention?" />
+        <button class="btn btn-primary" type="submit">Ask</button>
+      </form>
+      <div class="flooded hidden" id="flooded"></div>
+    </section>
+
+    <!-- Egress -->
+    <section class="pane egress" aria-label="Egress log">
+      <div class="pane-head">
+        <span class="role">Proof</span>
+        <h2>What left the room</h2>
+        <p class="muted">Every outbound byte, checked against every sealed value.</p>
+      </div>
+      <div class="tally" id="tally"></div>
+      <ol class="log" id="log"></ol>
+    </section>
+  </main>
+
+  <dialog id="hullDlg" class="dlg">
+    <div class="dlg-head">
+      <div>
+        <div class="role">Attestation</div>
+        <h3>Hull inspection</h3>
+      </div>
+      <button class="x" data-close type="button" aria-label="Close">×</button>
+    </div>
+    <p class="muted">We send a fresh random nonce to the inference gateway. It returns a token signed by Google Confidential Computing that must contain our nonce. We check the signature and the hardware claims ourselves.</p>
+    <ol class="checks" id="checks"></ol>
+    <div class="workload" id="workload"></div>
+    <div class="dlg-foot"><button class="btn btn-ghost" id="hullAgain" type="button">Re-inspect with a new nonce</button></div>
+  </dialog>
+
+  <dialog id="inspectDlg" class="dlg wide">
+    <div class="dlg-head">
+      <div>
+        <div class="role">Model context</div>
+        <h3>What the model sees</h3>
+      </div>
+      <button class="x" data-close type="button" aria-label="Close">×</button>
+    </div>
+    <div class="tabs" id="inspectTabs"></div>
+    <pre class="doc" id="inspectDoc"></pre>
+  </dialog>
+
+  <dialog id="payloadDlg" class="dlg wide">
+    <div class="dlg-head">
+      <div>
+        <div class="role" id="payloadRole">Outbound payload</div>
+        <h3 id="payloadTitle"></h3>
+      </div>
+      <button class="x" data-close type="button" aria-label="Close">×</button>
+    </div>
+    <pre class="doc" id="payloadDoc"></pre>
+  </dialog>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

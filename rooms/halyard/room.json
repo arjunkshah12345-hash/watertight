@@ -1,0 +1,44 @@
+{
+  "id": "halyard",
+  "company": "Halyard",
+  "tagline": "Operating system for shipping and port operators (synthetic demo company)",
+  "files": [
+    "pitch_deck.md",
+    "pnl_2026.csv",
+    "customers.csv",
+    "payroll.csv",
+    "cap_table.csv"
+  ],
+  "claims": [
+    {
+      "id": "ent-customers",
+      "kind": "internal",
+      "text": "40+ enterprise customers"
+    },
+    {
+      "id": "arr",
+      "kind": "internal",
+      "text": "$4.2M ARR"
+    },
+    {
+      "id": "nrr",
+      "kind": "internal",
+      "text": "131% net revenue retention"
+    },
+    {
+      "id": "margin",
+      "kind": "internal",
+      "text": "76% gross margin"
+    },
+    {
+      "id": "sea-trade",
+      "kind": "public",
+      "text": "Over 80% of global trade by volume moves by sea"
+    },
+    {
+      "id": "market",
+      "kind": "public",
+      "text": "The global maritime software market is roughly $12B"
+    }
+  ]
+}

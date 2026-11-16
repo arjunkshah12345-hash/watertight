@@ -1,0 +1,19 @@
+employee,department,title,base_salary,equity_pct
+Ava Abara,Engineering,Head of Engineering,210000,1.11
+Ben Brandt,Engineering,Software Engineer,168000,1.2
+Caro Costa,Engineering,Software Engineer,225000,0.43
+Dev Dahl,Engineering,Software Engineer,209000,0.7
+Eli Eze,Engineering,Software Engineer,209000,1.43
+Fay Fischer,Engineering,Software Engineer,211000,0.17
+Gus Grau,Engineering,Software Engineer,178000,0.38
+Hana Hale,Engineering,Software Engineer,190000,0.54
+Ivo Ito,Sales,Head of Sales,181000,0.95
+Jun Juarez,Sales,Account Executive,120000,0.75
+Kai Kim,Sales,Account Executive,164000,1.21
+Lena Lund,Sales,Account Executive,130000,1.26
+Milo Moreau,Customer Success,Head of Customer Success,102000,1.37
+Nia Nash,Customer Success,CS Manager,107000,0.74
+Otto Oyelaran,Customer Success,CS Manager,106000,0.68
+Pia Park,G&A,Head of G&A,195000,0.18
+Quin Qadir,G&A,Operations,211000,0.72
+Rui Ruiz,G&A,Operations,131000,1.1

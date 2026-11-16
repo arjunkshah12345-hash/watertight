@@ -1,0 +1,35 @@
+customer,segment,contract_start,arr_jan_2026,arr_oct_2026,status,champion
+Pelican Maritime,Enterprise,2023-02,101000,106000,active,Rae Chen
+Northwind Cargo,Enterprise,2024-01,106000,101000,active,Luis Haas
+Bluefin Logistics,Enterprise,2023-09,113000,113000,active,Ines Ortiz
+Saltmarsh Logistics,Enterprise,2023-10,165000,165000,active,Omar Haas
+Ironkeel Freight,Enterprise,2024-05,66000,0,churned,Ines Walsh
+Tidewater Port Services,Enterprise,2024-09,129000,129000,active,Priya Chen
+Cormorant Terminals,Enterprise,2023-09,134000,147000,active,Luis Ortiz
+Bayline Ferries,Enterprise,2025-06,139000,153000,active,Kofi Reyes
+Harborlight Logistics,Enterprise,2024-12,106000,122000,active,Tom Chen
+Seaforth Cargo,Enterprise,2025-06,133000,153000,active,Kofi Silva
+Gullwing Shipping Co.,Enterprise,2025-03,137000,137000,active,Sam Walsh
+Anchorpoint Maritime,Enterprise,2023-11,179000,0,churned,Luis Novak
+Driftwood Port Services,Enterprise,2025-10,103000,124000,active,Kofi Chen
+Kestrel Lines,Enterprise,2025-12,167000,167000,active,Luis Ortiz
+Marlinspike Port Services,Enterprise,2025-05,153000,176000,active,Ines Novak
+Stormgate Terminals,Enterprise,2024-10,62000,87000,active,Luis Reyes
+Coldwater Lines,Enterprise,2024-12,67000,74000,active,Tom Haas
+Lighthouse Shipping Co.,Enterprise,2024-08,110000,154000,active,Ines Silva
+Portside Maritime,Enterprise,2024-12,173000,182000,active,Ines Novak
+Wavecrest Logistics,Enterprise,2024-02,147000,0,churned,Priya Walsh
+Sandbar Freight,Enterprise,2025-10,89000,98000,active,Priya Silva
+Riptide Marine,Enterprise,2025-09,96000,91000,active,Sam Novak
+Ospreyline Port Services,Enterprise,2023-08,76000,122000,active,Rae Haas
+Breakwater Maritime,Enterprise,2023-08,110000,0,churned,Ines Ortiz
+Fathom Logistics,Enterprise,2025-03,84000,0,churned,Luis Novak
+Starboard Shipping Co.,Enterprise,2023-10,136000,129000,active,Priya Chen
+Leeward Shipping Co.,Mid-Market,2024-10,29000,28000,active,Ines Walsh
+Mooring Terminals,Mid-Market,2024-08,38000,44000,active,Luis Chen
+Galleon Ferries,Mid-Market,2025-08,45000,63000,active,Mei Chen
+Shoalhaven Terminals,Mid-Market,2024-08,22000,22000,active,Priya Ortiz
+Corsair Terminals,Mid-Market,2024-12,24000,38000,active,Rae Ortiz
+Skerry Lines,Mid-Market,2023-12,42000,67000,active,Mei Novak
+Brightwater Logistics,Mid-Market,2024-11,23000,28000,active,Tom Okafor
+Halcyon Maritime,Mid-Market,2024-04,43000,47000,active,Rae Reyes
