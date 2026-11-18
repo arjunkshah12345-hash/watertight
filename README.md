@@ -2,6 +2,8 @@
 
 A private AI data room. Investors ask questions about a startup's data room and get answers with sources. Sealed details never reach the model or the investor, every outbound byte is logged and checked, and the founder can revoke access instantly.
 
+**Site:** https://arjunkshah12345-hash.github.io/watertight/ (verifies the inference hull from your browser) · **Submission:** [SUBMISSION.md](SUBMISSION.md)
+
 Built for Boat Hackathon SF (Nov 2026). Halyard, the demo company, and all of its data are fictional.
 
 ## Run
