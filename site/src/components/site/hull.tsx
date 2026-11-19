@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 import { DitherGradient as Wash } from "@/components/dither-kit/gradient";
-import { ScrambleText } from "@/components/asciicn/scramble-text";
 
 const COMPARTMENTS = [
   {
@@ -68,7 +67,7 @@ export function Hull() {
       <div className="mx-auto max-w-7xl px-6 py-28 md:px-10">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="font-mono text-[11px] tracking-[0.2em] text-faint uppercase">02 · How it holds water</p>
+            <p className="font-mono text-[11px] tracking-[0.2em] text-faint uppercase">05 · How it holds water</p>
             <h2 className="mt-4 max-w-[40rem] text-[clamp(2.2rem,4.2vw,3.4rem)] leading-[1] font-semibold tracking-[-0.03em]">
               Six bulkheads. A breach in one never floods the next.
             </h2>
@@ -97,18 +96,24 @@ export function Hull() {
                 onFocus={() => setActive(i)}
                 onClick={() => setActive(i)}
                 aria-pressed={on}
-                className="group relative isolate h-56 overflow-hidden border-r-[3px] border-ink bg-paper text-left last:border-r-0 max-md:border-b-[3px] md:h-72"
+                className="group relative isolate h-48 overflow-hidden border-r-[3px] border-ink bg-paper text-left transition-colors last:border-r-0 max-md:border-b-[3px] md:h-64"
               >
-                <div className="water absolute inset-x-0 bottom-0 -z-10" style={{ height: on ? "74%" : "9%" }}>
-                  <div className="absolute inset-0 bg-[oklch(0.83_0.045_232)]" />
-                  <Wash from={222} to="transparent" direction="up" cell={3} opacity={0.4} />
-                </div>
-                <div className={`flex h-full flex-col justify-between p-4 md:p-5`}>
-                  <span className="font-mono text-[11px] text-faint">{x.n}</span>
-                  <div className="pb-3">
-                    <div className="text-[1.05rem] font-semibold tracking-[-0.01em]">{x.name}</div>
-                    <div className="mt-1 hidden text-[12.5px] leading-snug text-ink-2 md:block">{x.line}</div>
+                <div className="water absolute inset-x-0 bottom-0 -z-10" style={{ height: on ? "50%" : "9%" }}>
+                  <div className="absolute inset-0 bg-[oklch(0.3_0.06_235)]" />
+                  <Wash from={205} to="transparent" direction="down" cell={3} opacity={0.45} />
+                  <div className="absolute inset-x-0 top-0 h-px bg-foam/40" />
+                  <div
+                    className={`absolute inset-x-0 bottom-0 p-4 font-mono text-[12px] text-foam transition-opacity duration-500 md:p-5 md:text-[13px] ${
+                      on ? "opacity-100 delay-500" : "opacity-0"
+                    }`}
+                  >
+                    {x.stat}
                   </div>
+                </div>
+                <div className="absolute inset-x-0 top-0 flex flex-col p-4 md:p-5">
+                  <span className="font-mono text-[11px] text-faint">{x.n}</span>
+                  <div className="mt-3 text-[1.05rem] font-semibold tracking-[-0.01em]">{x.name}</div>
+                  <div className="mt-1 hidden text-[12.5px] leading-snug text-ink-2 md:block">{x.line}</div>
                 </div>
               </button>
             );
@@ -128,9 +133,9 @@ export function Hull() {
             <h3 className="text-[1.5rem] font-semibold tracking-[-0.02em]">{c.name}</h3>
             <p className="mt-2 max-w-[38rem] leading-relaxed text-ink-2">{c.body}</p>
           </div>
-          <ScrambleText key={c.n} as="div" trigger="mount" className="font-mono text-[1.35rem] text-ink" glyphs="blocks">
+          <div key={c.n} className="animate-rise font-mono text-[1.6rem] whitespace-nowrap text-ink md:text-[2rem]">
             {c.stat}
-          </ScrambleText>
+          </div>
         </div>
       </div>
     </section>
