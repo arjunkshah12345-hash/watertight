@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 2 });
+const p = await ctx.newPage();
+await p.goto('https://arjunkshah12345-hash.github.io/watertight/', { waitUntil: 'networkidle' });
+await p.waitForTimeout(1000);
+await p.evaluate(() => { const el = [...document.querySelectorAll('section')][4]; window.scrollTo({ top: el.getBoundingClientRect().top + scrollY + (el.offsetHeight - innerHeight) / 2, behavior: 'instant' }); });
+await p.waitForTimeout(4000);
+await p.screenshot({ path: '../assets/site/deck.png' });
+await b.close();

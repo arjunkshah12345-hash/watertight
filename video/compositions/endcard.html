@@ -1,0 +1,61 @@
+<template>
+  <style>
+    @font-face { font-family: "Instrument Sans"; src: url("assets/fonts/InstrumentSans.woff2") format("woff2"); font-weight: 400 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #141c2b; color: #dbe6ee; font-family: "Instrument Sans", sans-serif; }
+    #end-water { position: absolute; left: 0; bottom: -250px; width: 3840px; height: 520px; background: url("assets/brand/water.png") 0 0 / 3840px 520px no-repeat; opacity: 0.5; }
+    #end-glint { position: absolute; left: 0; bottom: -250px; width: 3840px; height: 520px; background: url("assets/brand/water-amber.png") 0 0 / 3840px 520px no-repeat; opacity: 0.18; }
+    #end-line { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-size: 108px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
+    #end-line .w { display: inline-block; opacity: 0; }
+    #end-line .amb { color: #f2b33d; }
+    #end-lock { position: absolute; left: 0; right: 0; top: 300px; display: flex; align-items: center; justify-content: center; gap: 34px; }
+    #end-mark { width: 150px; height: 150px; }
+    #end-word { font-size: 132px; font-weight: 600; letter-spacing: -0.035em; clip-path: inset(0 100% 0 0); }
+    #end-tag { position: absolute; left: 0; right: 0; top: 500px; text-align: center; font-size: 52px; font-weight: 400; letter-spacing: -0.015em; opacity: 0; }
+    #end-tag span { color: #f2b33d; }
+    #end-urls { position: absolute; left: 0; right: 0; top: 610px; text-align: center; font-family: "IBM Plex Mono", monospace; font-size: 32px; line-height: 1.6; opacity: 0; }
+    #end-urls b { color: #5fd4ad; font-weight: 400; }
+    #end-foot { position: absolute; left: 0; right: 0; top: 770px; text-align: center; font-family: "IBM Plex Mono", monospace; font-size: 28px; letter-spacing: 0.06em; color: rgba(219, 230, 238, 0.75); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="end-water"></div>
+    <div id="end-glint"></div>
+    <h1 id="end-line">Share the answers. <span class="amb">Keep the room.</span></h1>
+    <div id="end-lock">
+      <svg id="end-mark" viewBox="0 0 32 32">
+        <defs><clipPath id="end-hull"><path d="M5 10h22l-3 12a2.5 2.5 0 0 1-2.4 1.9H10.4A2.5 2.5 0 0 1 8 22L5 10Z" /></clipPath></defs>
+        <rect width="32" height="32" rx="7" fill="#0d1b2a" stroke="rgba(219,230,238,0.25)" stroke-width="0.5" />
+        <g clip-path="url(#end-hull)"><rect id="end-fill" x="0" y="10" width="32" height="16" fill="#f2b33d" /></g>
+        <path d="M5 10h22l-3 12a2.5 2.5 0 0 1-2.4 1.9H10.4A2.5 2.5 0 0 1 8 22L5 10Z" fill="none" stroke="#f4f1ea" stroke-width="2" />
+        <path d="M12.3 10v13.9M19.7 10v13.9" stroke="#f4f1ea" stroke-width="2" />
+      </svg>
+      <div id="end-word">Watertight</div>
+    </div>
+    <div id="end-tag">Due diligence <span>that doesn't leak.</span></div>
+    <div id="end-urls"><b>→</b> arjunkshah12345-hash.github.io/watertight<br /><b>→</b> github.com/arjunkshah12345-hash/watertight</div>
+    <div id="end-foot">Built aboard the Historic Klamath · Boat Hackathon SF 2026</div>
+  </div>
+  <script>
+    (function () {
+      var el = document.querySelector("#end-line");
+      var html = "";
+      el.childNodes.forEach(function (n) {
+        var cls = n.nodeType === 3 ? "" : " " + n.className;
+        n.textContent.split(/(\s+)/).forEach(function (p) { html += /\S/.test(p) ? '<span class="w' + cls + '">' + p + "</span>" : p; });
+      });
+      el.innerHTML = html;
+      var tl = gsap.timeline({ paused: true });
+      tl.fromTo("#end-water", { x: 0 }, { x: -600, duration: 9, ease: "none" }, 0);
+      tl.fromTo("#end-glint", { x: -200 }, { x: -500, duration: 9, ease: "none" }, 0);
+      tl.fromTo("#end-line .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.12 }, 0.35);
+      tl.to("#end-line .w", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", stagger: 0.03 }, 3.3);
+      // the mark: a dark hull fills with beacon light, then the wordmark wipes in beside it
+      tl.fromTo("#end-mark", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, 3.7);
+      tl.fromTo("#end-fill", { attr: { y: 26 } }, { attr: { y: 10 }, duration: 0.8, ease: "power2.inOut" }, 3.95);
+      tl.fromTo("#end-word", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power3.out" }, 4.45);
+      tl.fromTo("#end-tag", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 5.0);
+      tl.fromTo("#end-urls", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, 5.5);
+      tl.fromTo("#end-foot", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, 6.0);
+      window.__timelines["endcard"] = tl;
+    })();
+  </script>
+</template>

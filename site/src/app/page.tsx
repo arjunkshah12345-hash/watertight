@@ -1,5 +1,6 @@
 import { Closing } from "@/components/site/closing";
 import { Hero } from "@/components/site/hero";
+import { Film } from "@/components/site/film";
 import { Hull } from "@/components/site/hull";
 import { Leak } from "@/components/site/leak";
 import { Redline } from "@/components/site/redline";
@@ -15,6 +16,7 @@ export default function Home() {
       <Redline />
       <Verify />
       <Hull />
+      <Film />
       <Closing />
     </main>
   );

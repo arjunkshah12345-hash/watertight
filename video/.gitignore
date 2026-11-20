@@ -1,0 +1,7 @@
+node_modules/
+capture/node_modules/
+renders/
+.thumbnails/
+snapshots/
+.hyperframes/
+out/

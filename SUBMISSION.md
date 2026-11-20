@@ -3,7 +3,7 @@
 **Track:** Best private AI build (NY Token Exchange + LetsEncrypt.AI)
 **Site:** https://arjunkshah12345-hash.github.io/watertight/
 **Code:** https://github.com/arjunkshah12345-hash/watertight
-**Demo video:** `video/out/watertight-demo.mp4` (upload to the submission form / X)
+**Demo video:** https://arjunkshah12345-hash.github.io/watertight/demo.mp4 (88 s, also embedded on the site under "Film"; re-render with `cd video && npm run render`)
 
 ## One line
 

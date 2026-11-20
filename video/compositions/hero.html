@@ -1,0 +1,28 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b1120; }
+    #hero-wrap { position: absolute; inset: 0; }
+    #hero-video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+    #hero-tag { position: absolute; right: 120px; bottom: 96px; font-family: "IBM Plex Mono", monospace; font-size: 28px; color: #dbe6ee; opacity: 0; letter-spacing: 0.02em; text-align: right; }
+    #hero-tag b { color: #f2b33d; font-weight: 400; }
+  </style>
+  <div id="root" data-composition-id="hero" data-width="1920" data-height="1080">
+    <div id="hero-wrap">
+      <video id="hero-video" class="clip" src="assets/footage/site-hero.mp4" data-start="0" data-duration="6.4" data-playback-rate="0.94" data-track-index="0" muted playsinline></video>
+    </div>
+    <div id="hero-tag"><b>●</b> arjunkshah12345-hash.github.io/watertight</div>
+  </div>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      // water rises: the hero floods in from the bottom
+      tl.fromTo("#hero-wrap", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.75, ease: "power2.inOut" }, 0);
+      tl.fromTo("#hero-wrap", { scale: 1.06 }, { scale: 1, duration: 1.4, ease: "expo.out" }, 0);
+      tl.fromTo("#hero-tag", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.6);
+      // whip out to the app
+      tl.to("#hero-tag", { opacity: 0, duration: 0.15 }, 5.95);
+      tl.to("#hero-wrap", { x: -320, filter: "blur(18px)", duration: 0.3, ease: "power3.in" }, 6.1);
+      window.__timelines["hero"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
+await p.goto('http://localhost:4310/', { waitUntil: 'networkidle' });
+await p.waitForTimeout(4000);
+await p.screenshot({ path: '/tmp/app-0.png' });
+await p.click('.chip.sealed >> nth=0'); await p.waitForTimeout(1500);
+await p.screenshot({ path: '/tmp/app-1.png' });
+await p.click('.chip >> nth=0'); await p.waitForTimeout(3000);
+await p.screenshot({ path: '/tmp/app-2.png' });
+await p.click('#claimsBtn'); await p.waitForTimeout(4000);
+await p.screenshot({ path: '/tmp/app-3.png' });
+await b.close();

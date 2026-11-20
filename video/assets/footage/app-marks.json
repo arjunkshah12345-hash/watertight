@@ -1,0 +1,61 @@
+{
+  "clickSealed": {
+    "t": 1.505,
+    "box": {
+      "x": 381,
+      "y": 936.75,
+      "width": 216.421875,
+      "height": 30.75
+    }
+  },
+  "clickNRR": {
+    "t": 6.026,
+    "box": {
+      "x": 381,
+      "y": 898,
+      "width": 198.171875,
+      "height": 30.75
+    }
+  },
+  "clickPayload": {
+    "t": 11.045,
+    "box": {
+      "x": 1542,
+      "y": 421,
+      "width": 120.203125,
+      "height": 22
+    }
+  },
+  "closePayload": {
+    "t": 15.571,
+    "box": {
+      "x": 1402.25,
+      "y": 186,
+      "width": 24.75,
+      "height": 26
+    }
+  },
+  "clickClaims": {
+    "t": 16.808,
+    "box": {
+      "x": 1343.625,
+      "y": 121.5,
+      "width": 135.375,
+      "height": 41
+    }
+  },
+  "clickRevoke": {
+    "t": 22.85,
+    "box": {
+      "x": 45,
+      "y": 990,
+      "width": 278,
+      "height": 47
+    }
+  },
+  "end": {
+    "t": 27.875,
+    "box": null
+  },
+  "firstFrameOffset": 0.008
+}

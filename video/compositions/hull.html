@@ -1,0 +1,110 @@
+<template>
+  <style>
+    @font-face { font-family: "Instrument Sans"; src: url("assets/fonts/InstrumentSans.woff2") format("woff2"); font-weight: 400 700; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #f5f1e8; font-family: "Instrument Sans", sans-serif; }
+    #hull-wrap { position: absolute; inset: 0; }
+    #hull-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #hull-stage img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #hull-stage img.st { opacity: 0; }
+    #hull-box { position: absolute; left: 1443px; top: 184px; width: 87px; height: 25px; border: 2px solid #e0a12a; border-radius: 4px; opacity: 0; }
+
+    #hull-rail { position: absolute; left: 0; top: 0; width: 760px; height: 1080px; background: #141c2b; color: #dbe6ee; overflow: hidden; }
+    #hull-rail .edge { position: absolute; right: 0; top: 0; bottom: 0; width: 2px; background: rgba(242, 179, 61, 0.55); }
+    #hull-rail .tex { position: absolute; left: 0; bottom: 0; width: 3840px; height: 520px; background: url("assets/brand/water.png") 0 0 / 3840px 520px no-repeat; opacity: 0.22; }
+    .hblk { position: absolute; left: 72px; right: 64px; top: 220px; }
+    .kick { font-family: "IBM Plex Mono", monospace; font-size: 28px; letter-spacing: 0.12em; text-transform: uppercase; color: #f2b33d; opacity: 0; }
+    .head { margin-top: 26px; font-size: 64px; line-height: 1.05; font-weight: 500; letter-spacing: -0.022em; }
+    .head .w { display: inline-block; opacity: 0; }
+    .head .hl { color: #5fd4ad; }
+    .lines { margin-top: 44px; font-family: "IBM Plex Mono", monospace; font-size: 28px; line-height: 1.32; color: rgba(219, 230, 238, 0.82); }
+    .lines div { opacity: 0; margin-bottom: 14px; }
+    .lines b { color: #f2b33d; font-weight: 400; }
+    .lines i { font-style: normal; color: #5fd4ad; }
+  </style>
+  <div id="root" data-composition-id="hull" data-width="1920" data-height="1080">
+    <div id="hull-wrap">
+      <div id="hull-stage">
+        <img id="hull-final" src="assets/site/verify-07.png" alt="" />
+        <img id="hull-v0" class="st" src="assets/site/verify-00.png" alt="" />
+        <img id="hull-v1" class="st" src="assets/site/verify-01.png" alt="" />
+        <img id="hull-v2" class="st" src="assets/site/verify-02.png" alt="" />
+        <img id="hull-v4" class="st" src="assets/site/verify-03.png" alt="" />
+        <img id="hull-v5" class="st" src="assets/site/verify-04.png" alt="" />
+        <img id="hull-v6" class="st" src="assets/site/verify-05.png" alt="" />
+        <img id="hull-v7" class="st" src="assets/site/verify-06.png" alt="" />
+        <div id="hull-box"></div>
+      </div>
+    </div>
+    <div id="hull-rail">
+      <div class="tex"></div><div class="edge"></div>
+      <div class="hblk" id="hull-bH">
+        <div class="kick">05 · Verify the hull</div>
+        <div class="head">Don't trust us. Check the hull.</div>
+        <div class="lines">
+          <div><b>fresh nonce</b> → /attestation</div>
+          <div>Google Confidential Space JWT</div>
+          <div>checked against Google's JWKS</div>
+          <div>Intel TDX · debug off since boot</div>
+          <div><i>runs in your browser</i></div>
+        </div>
+      </div>
+      <div class="hblk" id="hull-bI">
+        <div class="kick">The honest claim</div>
+        <div class="head"><span class="hl">Attested</span> confidential inference.</div>
+        <div class="lines">
+          <div>The gateway proves the code it runs on confidential hardware. Not client-side encryption.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var R = "";
+      document.querySelectorAll(R + ".head").forEach(function (el) {
+        var html = "";
+        el.childNodes.forEach(function (n) {
+          var cls = n.nodeType === 3 ? "" : " " + n.className;
+          n.textContent.split(/(\s+)/).forEach(function (p) { html += /\S/.test(p) ? '<span class="w' + cls + '">' + p + "</span>" : p; });
+        });
+        el.innerHTML = html;
+      });
+      function cam(s, ax, ay, fx, fy) {
+        var x = fx - ax * s, y = fy - ay * s;
+        x = Math.min(0, Math.max(1920 - 1920 * s, x));
+        y = Math.min(0, Math.max(1080 - 1080 * s, y));
+        return { scale: s, x: x, y: y };
+      }
+      function blkIn(id, t) {
+        tl.fromTo(id + " .kick", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, t);
+        tl.fromTo(id + " .head .w", { opacity: 0, filter: "blur(7px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.07 }, t + 0.12);
+        var words = document.querySelectorAll(R + id + " .head .w").length;
+        tl.fromTo(id + " .lines div", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out", stagger: 0.42 }, t + 0.25 + words * 0.07 + 0.2);
+      }
+      var tl = gsap.timeline({ paused: true });
+      var FULL = cam(1, 960, 540, 960, 540);
+      var PANEL = cam(1.65, 1226, 432, 1340, 540);
+      tl.set("#hull-stage", FULL, 0);
+      tl.set("#hull-rail", { clipPath: "inset(0% 100% 0% 0%)" }, 0);
+      // new screen lands slightly large and settles
+      tl.fromTo("#hull-wrap", { scale: 1.05, filter: "blur(10px)" }, { scale: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 0);
+      // the checks tick (real states captured from the live site; spacing slowed for reading)
+      var seq = [["#hull-v0", 0], ["#hull-v1", 2.3], ["#hull-v2", 2.75], ["#hull-v4", 3.2], ["#hull-v5", 3.6], ["#hull-v6", 4.0], ["#hull-v7", 4.4]];
+      seq.forEach(function (s, i) {
+        tl.set(s[0], { opacity: 1 }, s[1]);
+        if (i > 0) tl.set(seq[i - 1][0], { opacity: 0 }, s[1]);
+      });
+      tl.set("#hull-v7", { opacity: 0 }, 5.3);
+      tl.fromTo("#hull-box", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 5.35);
+
+      tl.fromTo("#hull-rail", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power3.inOut" }, 1.4);
+      tl.to("#hull-stage", { scale: PANEL.scale, x: PANEL.x, y: PANEL.y, duration: 0.9, ease: "power3.inOut" }, 1.4);
+      tl.fromTo("#hull-rail .tex", { x: 0 }, { x: -300, duration: 12, ease: "none" }, 0);
+      blkIn("#hull-bH", 1.75);
+      tl.to("#hull-bH", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 7.6);
+      blkIn("#hull-bI", 7.85);
+      // blur swap out
+      tl.to("#hull-wrap, #hull-rail", { opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power2.in" }, 11.75);
+      window.__timelines["hull"] = tl;
+    })();
+  </script>
+</template>

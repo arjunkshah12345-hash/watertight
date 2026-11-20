@@ -29,6 +29,7 @@ export function Hero() {
           <a className="transition-colors hover:text-foam" href="#room">Try it</a>
           <a className="transition-colors hover:text-foam" href="#verify">Verify</a>
           <a className="transition-colors hover:text-foam" href="#hull">How it works</a>
+          <a className="transition-colors hover:text-foam" href="#film">Film</a>
           <a className="transition-colors hover:text-foam" href={REPO}>Code</a>
         </nav>
       </header>
