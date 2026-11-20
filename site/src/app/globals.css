@@ -46,6 +46,8 @@
   --color-sea: var(--sea);
   --color-signal: var(--signal);
   --color-foam: var(--foam);
+  --color-mint: var(--mint);
+  --color-ember: var(--ember);
 }
 
 :root {
@@ -64,6 +66,8 @@
   --beacon: oklch(0.8 0.15 75);
   --sea: oklch(0.55 0.1 170);
   --signal: oklch(0.58 0.19 32);
+  --mint: oklch(0.8 0.13 165);
+  --ember: oklch(0.7 0.17 30);
 
   --background: var(--paper);
   --foreground: var(--ink);

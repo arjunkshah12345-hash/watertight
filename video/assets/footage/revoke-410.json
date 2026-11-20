@@ -1,0 +1,6 @@
+{
+  "id": "deal_3c9cbbd71c",
+  "status": 410,
+  "statusText": "Gone",
+  "body": "{\"error\":\"Access revoked. This compartment has been sealed and its key destroyed.\"}"
+}

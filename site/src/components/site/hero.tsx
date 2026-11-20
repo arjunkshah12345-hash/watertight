@@ -25,9 +25,11 @@ export function Hero() {
           <span className="text-[17px] font-semibold tracking-[-0.01em]">Watertight</span>
         </a>
         <nav className="hidden items-center gap-7 font-mono text-[12px] text-foam/70 md:flex">
+          <a className="transition-colors hover:text-foam" href="#leak">The leak</a>
+          <a className="transition-colors hover:text-foam" href="#room">Try it</a>
           <a className="transition-colors hover:text-foam" href="#verify">Verify</a>
           <a className="transition-colors hover:text-foam" href="#hull">How it works</a>
-          <a className="transition-colors hover:text-foam" href="#proof">Proof</a>
+          <a className="transition-colors hover:text-foam" href="#film">Film</a>
           <a className="transition-colors hover:text-foam" href={REPO}>Code</a>
         </nav>
       </header>
@@ -53,10 +55,10 @@ export function Hero() {
               <a href="#verify">Verify the hull</a>
             </DitherButton>
             <a
-              href="#proof"
+              href="#room"
               className="font-mono text-[13px] text-foam/70 underline-offset-4 transition-colors hover:text-foam hover:underline"
             >
-              Watch it refuse →
+              Try the room →
             </a>
           </div>
         </div>

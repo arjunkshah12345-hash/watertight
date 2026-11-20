@@ -3,6 +3,7 @@
 **Track:** Best private AI build (NY Token Exchange + LetsEncrypt.AI)
 **Site:** https://arjunkshah12345-hash.github.io/watertight/
 **Code:** https://github.com/arjunkshah12345-hash/watertight
+**Demo video:** https://arjunkshah12345-hash.github.io/watertight/demo.mp4 (88 s, also embedded on the site under "Film"; re-render with `cd video && npm run render`)
 
 ## One line
 
@@ -41,7 +42,7 @@ Founders upload their most sensitive files (customer lists, payroll, cap table) 
 | Time | On screen | Say |
 |---|---|---|
 | 0:00 | Landing site hero | "Investors now paste data rooms into chatbots. Watertight is a data room where AI diligence can't leak." |
-| 0:20 | Site → Verify the hull (runs on scroll) | "Don't trust us. My browser just sent a fresh nonce to the confidential gateway, got back a token signed by Google, and checked it. Eight of eight. No server of ours was involved." |
+| 0:20 | Site → Verify the hull (click "Re-inspect with a new nonce") | "Don't trust us. My browser just sent a fresh nonce to the confidential gateway, got back a token signed by Google, and checked it. Eight of eight. No server of ours was involved." |
 | 0:45 | App (`npm start`), founder pane | "Halyard's founder uploads the room. Customers, salaries and the cap table are sealed. Each deal gets its own key and its own process." |
 | 1:05 | Investor asks "Who are the top 5 customers?" | "Refused inside the room. Zero bytes left. Look at the right pane." |
 | 1:20 | Investor asks "What's net revenue retention?" | "This one is allowed. It goes to GLM over confidential inference: 91.6%. The deck said 131%. The leak scan says 0 of 133 sealed values went out, and you can open the exact payload." |
@@ -49,7 +50,9 @@ Founders upload their most sensitive files (customer lists, payroll, cap table) 
 | 2:15 | Founder clicks Revoke | "The founder sinks access: process killed, key zeroed, files shredded." |
 | 2:30 | Investor asks again → 410 | "Nothing left to read. Share the answers, keep the room." |
 
-Fallback: if the network drops, the app runs in **offline rehearsal** mode with canned answers and no network calls. Hull verification still needs internet access.
+Fallbacks:
+- No API key or the app won't start: run the 0:45–2:30 beats on the site's **Try the room** section instead. It plays the same refuse → answer → revoke → 410 flow with replies captured from the app.
+- Network drops: the app runs in **offline rehearsal** mode with canned answers and no network calls. Hull verification still needs internet access.
 
 ## Eligibility checklist
 

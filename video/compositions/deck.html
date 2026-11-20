@@ -1,0 +1,33 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #f5f1e8; }
+    #deck-whip { position: absolute; inset: 0; }
+    #deck-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #deck-img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  </style>
+  <div id="root" data-composition-id="deck" data-width="1920" data-height="1080">
+    <div id="deck-whip">
+      <div id="deck-stage"><img id="deck-img" src="assets/site/deck.png" alt="" /></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      function cam(s, ax, ay, fx, fy) {
+        var x = fx - ax * s, y = fy - ay * s;
+        x = Math.min(0, Math.max(1920 - 1920 * s, x));
+        y = Math.min(0, Math.max(1080 - 1080 * s, y));
+        return { scale: s, x: x, y: y };
+      }
+      var tl = gsap.timeline({ paused: true });
+      // start framed on the headline and chart, then settle on the three numbers
+      var TOP = cam(1.12, 960, 420, 960, 540);
+      var CARDS = cam(1.5, 960, 722, 960, 560);
+      tl.set("#deck-stage", TOP, 0);
+      tl.fromTo("#deck-whip", { x: 380, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 0);
+      tl.to("#deck-stage", { scale: CARDS.scale, x: CARDS.x, y: CARDS.y, duration: 0.9, ease: "power3.inOut" }, 2.6);
+      // dip out: darken for three frames before the hard cut
+      tl.to("#deck-whip", { filter: "brightness(0.6)", duration: 0.1, ease: "none" }, 5.9);
+      window.__timelines["deck"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,58 @@
+<template>
+  <style>
+    @font-face { font-family: "Instrument Sans"; src: url("assets/fonts/InstrumentSans.woff2") format("woff2"); font-weight: 400 700; }
+    #root { position: absolute; inset: 0; background: #141c2b; overflow: hidden; font-family: "Instrument Sans", sans-serif; color: #dbe6ee; }
+    #open-water { position: absolute; left: 0; bottom: 0; width: 3840px; height: 520px; background: url("assets/brand/water.png") 0 0 / 3840px 520px no-repeat; opacity: 0.55; }
+    #open-horizon { position: absolute; left: 0; right: 0; bottom: 520px; height: 1px; background: rgba(219, 230, 238, 0.12); }
+    .open-line { position: absolute; left: 200px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.04; }
+    #open-l1 { top: 250px; font-size: 92px; width: 1500px; }
+    #open-l2 { top: 330px; font-size: 104px; width: 1500px; }
+    .open-line .w { display: inline-block; opacity: 0; }
+    #open-l2 .red { color: #e0603c; }
+    #open-files { position: absolute; left: 200px; top: 520px; display: flex; gap: 22px; }
+    .open-file { font-family: "IBM Plex Mono", monospace; font-size: 30px; padding: 12px 22px; border: 1px solid rgba(219, 230, 238, 0.28); border-radius: 8px; color: #dbe6ee; background: rgba(20, 28, 43, 0.9); opacity: 0; }
+    .open-file b { color: #f2b33d; font-weight: 400; }
+    #open-arrow { position: absolute; left: 200px; top: 610px; font-family: "IBM Plex Mono", monospace; font-size: 30px; color: rgba(219, 230, 238, 0.7); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="open" data-width="1920" data-height="1080">
+    <div id="open-water"></div>
+    <div id="open-horizon"></div>
+    <h1 id="open-l1" class="open-line">Investors now paste data rooms into chatbots.</h1>
+    <div id="open-files">
+      <div class="open-file" id="open-f1"><b>▤</b> customers.csv</div>
+      <div class="open-file" id="open-f2"><b>▤</b> payroll.csv</div>
+      <div class="open-file" id="open-f3"><b>▤</b> cap_table.csv</div>
+    </div>
+    <div id="open-arrow">→ a model nobody in the deal can audit</div>
+    <h1 id="open-l2" class="open-line">Every paste <span class="red">leaves the room.</span></h1>
+  </div>
+  <script>
+    (function () {
+      // split headline words into spans for per-word reveals
+      document.querySelectorAll(".open-line").forEach(function (el) {
+        var html = "";
+        el.childNodes.forEach(function (n) {
+          if (n.nodeType === 3) {
+            n.textContent.split(/(\s+)/).forEach(function (p) { html += /\S/.test(p) ? '<span class="w">' + p + "</span>" : p; });
+          } else {
+            var cls = n.className;
+            n.textContent.split(/(\s+)/).forEach(function (p) { html += /\S/.test(p) ? '<span class="w ' + cls + '">' + p + "</span>" : p; });
+          }
+        });
+        el.innerHTML = html;
+      });
+      var tl = gsap.timeline({ paused: true });
+      // water drifts at constant speed: the world moves, the type holds still
+      tl.fromTo("#open-water", { x: 0 }, { x: -520, duration: 7, ease: "none" }, 0);
+      tl.fromTo("#open-l1 .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.075 }, 0.0);
+      tl.fromTo([".open-file"], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out", stagger: 0.08 }, 1.75);
+      tl.fromTo("#open-arrow", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.7);
+      // the files leave the room: a fast horizontal smear off frame
+      tl.to(".open-file", { x: 2000, filter: "blur(14px)", duration: 0.5, ease: "power3.in", stagger: 0.05 }, 3.9);
+      tl.to("#open-arrow", { opacity: 0, filter: "blur(6px)", duration: 0.2 }, 3.95);
+      tl.to("#open-l1 .w", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", stagger: 0.03 }, 4.25);
+      tl.fromTo("#open-l2 .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.09 }, 4.65);
+      window.__timelines["open"] = tl;
+    })();
+  </script>
+</template>

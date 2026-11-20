@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
+await p.goto(process.argv[2], { waitUntil: 'networkidle' });
+await p.waitForTimeout(3000);
+const h = await p.evaluate(() => document.body.scrollHeight);
+console.log('height', h);
+const secs = await p.evaluate(() => [...document.querySelectorAll('section, header, footer, [id]')].slice(0,60).map(e => `${e.tagName}#${e.id}.${(e.className+'').slice(0,40)} y=${Math.round(e.getBoundingClientRect().top+scrollY)} h=${Math.round(e.getBoundingClientRect().height)} :: ${(e.innerText||'').slice(0,60).replace(/\n/g,' | ')}`));
+console.log(secs.join('\n'));
+await p.screenshot({ path: process.argv[3], fullPage: true });
+await b.close();

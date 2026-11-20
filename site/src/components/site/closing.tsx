@@ -4,7 +4,6 @@ import { AsciiBadge } from "@/components/asciicn/ascii-badge";
 import { OceanWaves } from "@/components/asciicn/ocean-waves";
 import { TypewriterText } from "@/components/asciicn/typewriter-text";
 import { DitherButton } from "@/components/dithercn/dither-button";
-import { GradientText } from "@/components/gradient-text";
 import { Mark } from "@/components/site/mark";
 
 const REPO = "https://github.com/arjunkshah12345-hash/watertight";
@@ -37,22 +36,17 @@ export function Closing() {
           <h2 className="mt-8 text-[clamp(2.8rem,6.5vw,5.4rem)] leading-[0.95] font-semibold tracking-[-0.035em] text-foam">
             Share the answers.
             <br />
-            <GradientText
-              colors={["#f2b33d", "#ffd27a", "#5fd4ad", "#f2b33d"]}
-              speed={0.6}
-            >
-              Keep the room.
-            </GradientText>
+            <span className="text-beacon">Keep the room.</span>
           </h2>
           <p className="mt-6 max-w-[32rem] leading-relaxed text-foam/70">
             An NDA tells you what happens after a leak. Watertight stops the leak from happening.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <DitherButton asChild size="lg" color="orange">
-              <a href={REPO}>Run the demo room</a>
+              <a href="#room">Try the room</a>
             </DitherButton>
             <DitherButton asChild size="lg" variant="outline">
-              <a href={`${REPO}#how-it-holds-water`}>Read the code</a>
+              <a href={REPO}>Read the code</a>
             </DitherButton>
           </div>
           <div className="mt-14 flex flex-wrap justify-center gap-2.5 rounded-md bg-night/85 px-4 py-3 backdrop-blur-sm">
