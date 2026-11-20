@@ -25,6 +25,16 @@ export function Film() {
             preload="none"
           />
         </div>
+        <p className="mt-3 font-mono text-[12px] leading-relaxed text-foam/60">
+          <a className="underline underline-offset-2" href="https://www.scottbuckley.com.au/library/neon/">
+            “Neon” by Scott Buckley
+          </a>
+          {" · "}
+          <a className="underline underline-offset-2" href="https://creativecommons.org/licenses/by/4.0/">
+            CC BY 4.0
+          </a>
+          {" · Edited for this film"}
+        </p>
       </div>
     </section>
   );
