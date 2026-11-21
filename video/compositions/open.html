@@ -44,7 +44,7 @@
       var tl = gsap.timeline({ paused: true });
       // water drifts at constant speed: the world moves, the type holds still
       tl.fromTo("#open-water", { x: 0 }, { x: -520, duration: 7, ease: "none" }, 0);
-      tl.fromTo("#open-l1 .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.075 }, 0.0);
+      tl.fromTo("#open-l1 .w", { opacity: 0.3, filter: "blur(4px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.075 }, 0.0);
       tl.fromTo([".open-file"], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out", stagger: 0.08 }, 1.75);
       tl.fromTo("#open-arrow", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.7);
       // the files leave the room: a fast horizontal smear off frame

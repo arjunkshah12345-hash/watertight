@@ -112,8 +112,8 @@
       // the next question
       tl.to("#rv-dim", { opacity: 0.82, duration: 0.4, ease: "power2.inOut" }, 7.0);
       tl.to("#rv-stage", { filter: "blur(6px)", duration: 0.4, ease: "power2.inOut" }, 7.0);
-      tl.fromTo("#rv-term", { opacity: 0, scale: 0.97, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 7.2);
-      tl.fromTo("#rv-code div", { opacity: 0 }, { opacity: 1, duration: 0.12, stagger: 0.4 }, 7.6);
+      tl.fromTo("#rv-term", { opacity: 0, scale: 0.97, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 7.1);
+      tl.fromTo("#rv-code div", { opacity: 0 }, { opacity: 1, duration: 0.12, stagger: 0.12 }, 7.3);
       tl.to("#rv-wrap, #rv-term", { opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power2.in" }, 10.75);
       window.__timelines["revoke"] = tl;
     })();
